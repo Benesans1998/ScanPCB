@@ -1,0 +1,148 @@
+scanpcb_version: "0.1"
+
+board:
+  id: SCAN-DEMO-001
+  name: ScanPCB Demo Board
+  summary: USB-powered ESP32-S3 reference board for the ScanPCB proof of concept.
+  description: >-
+    A fictional but technically plausible development and sensor-interface board
+    used to demonstrate persistent board identity, revision-aware documentation,
+    repair data and Git-based collaboration.
+  organization: ScanPCB Community
+  designers:
+    - Benedetta Sansone
+  status: prototype
+  tags:
+    - open-hardware
+    - repairability
+    - esp32-s3
+    - usb-c
+  website: https://scanpcb.org/board/SCAN-DEMO-001
+
+repository:
+  url: https://github.com/OWNER/scanpcb
+  branch: main
+  board_path: examples/demo-board
+  placeholder: true
+
+revisions:
+  - id: "1.0"
+    label: REV 1.0
+    date: "2026-10-20"
+    status: prototype
+    summary: Initial proof-of-concept revision for documentation and diagnostics.
+    changelog: CHANGELOG.md
+    hardware:
+      schematic:
+        path: hardware/REV1/schematic
+        status: placeholder
+        format: KiCad project and PDF export
+      bom:
+        path: hardware/REV1/bom/bom.csv
+        status: draft
+        format: CSV
+      pcb_source:
+        path: hardware/REV1/pcb
+        status: placeholder
+        format: KiCad PCB
+      gerber:
+        path: hardware/REV1/gerber
+        status: placeholder
+        format: Gerber X2 and Excellon
+      assembly:
+        path: hardware/REV1/assembly
+        status: placeholder
+        format: PDF and CSV
+    firmware:
+      path: firmware
+      compatibility: REV 1.0; Arduino-compatible ESP32-S3 demonstration only
+      status: example
+    diagnostics:
+      test_points: diagnostics/test-points.yaml
+      known_issues: diagnostics/known-issues.yaml
+      known_issues_human: diagnostics/known-issues.md
+      troubleshooting: diagnostics/troubleshooting.yaml
+      troubleshooting_human: diagnostics/troubleshooting.md
+    images:
+      - images/demo-board-top.svg
+      - images/scanpcb-demo-board-rev-1.0.svg
+
+components:
+  - references: [U1]
+    quantity: 1
+    value: ESP32-S3-WROOM-1-N8
+    manufacturer: Espressif Systems
+    mpn: ESP32-S3-WROOM-1-N8
+    package: Module 41-pin
+    description: Wi-Fi and Bluetooth LE MCU module with 8 MB flash.
+    datasheet: https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf
+    lifecycle: active
+    alternatives: []
+    notes: Antenna keep-out and module variant must be checked before layout release.
+
+  - references: [U2]
+    quantity: 1
+    value: CP2102N
+    manufacturer: Silicon Labs
+    mpn: CP2102N-A02-GQFN24
+    package: QFN-24
+    description: USB 2.0 full-speed to UART bridge.
+    datasheet: https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf
+    lifecycle: active
+    alternatives: []
+    notes: Exact package suffix is part of the MPN and PCB footprint decision.
+
+  - references: [U3]
+    quantity: 1
+    value: 3.3 V
+    manufacturer: Diodes Incorporated
+    mpn: AP2112K-3.3TRG1
+    package: SOT-25
+    description: 600 mA low-dropout regulator with enable.
+    datasheet: https://www.diodes.com/assets/Datasheets/AP2112.pdf
+    lifecycle: active
+    alternatives:
+      - manufacturer: Microchip Technology
+        mpn: MIC5504-3.3YM5-TR
+        qualification: candidate
+        notes: Not pin-compatible. Requires schematic, footprint and stability review.
+    notes: Thermal margin and ESP32-S3 peak current must be validated on real hardware.
+
+  - references: [J1]
+    quantity: 1
+    value: USB-C USB 2.0
+    manufacturer: GCT
+    mpn: USB4105-GF-A
+    package: SMT top-mount receptacle
+    description: USB Type-C receptacle for power and USB 2.0 data.
+    datasheet: https://gct.co/files/drawings/usb4105.pdf
+    lifecycle: active
+    alternatives: []
+    notes: Shield, CC resistors and mechanical retention require design review.
+
+visibility:
+  default: public
+  resources:
+    schematic: public
+    bom: public
+    firmware: qr_only
+    gerber: private
+    pcb_source: public
+    diagnostics: public
+  enforcement: metadata_only_in_v0.1
+
+qr:
+  canonical_url: https://scanpcb.org/board/SCAN-DEMO-001
+  revision_urls:
+    "1.0": https://scanpcb.org/board/SCAN-DEMO-001/rev/1.0
+  error_correction: M
+  asset_svg: images/scanpcb-demo-board-rev-1.0.svg
+
+licenses:
+  project: MIT
+  metadata: MIT
+  documentation: MIT
+  hardware: TBD
+  firmware: MIT
+  note: Hardware licensing must be selected before real design files are released.
+

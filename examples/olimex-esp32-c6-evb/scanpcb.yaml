@@ -1,0 +1,171 @@
+scanpcb_version: "0.1"
+
+board:
+  id: OLIMEX-ESP32-C6-EVB
+  name: ESP32-C6-EVB
+  summary: Open Source Hardware ESP32-C6 evaluation board by Olimex.
+  description: >-
+    Open Source Hardware ESP32-C6 evaluation board with Wi-Fi 6, Bluetooth 5 LE,
+    IEEE 802.15.4 connectivity, four relays and four opto-isolated inputs.
+  organization: Olimex Ltd
+  manufacturer: Olimex
+  designers:
+    - Olimex Ltd
+  status: active
+  tags:
+    - open-source-hardware
+    - esp32-c6
+    - wifi-6
+    - bluetooth-le
+    - zigbee
+    - thread
+    - matter
+    - relays
+  website: https://www.olimex.com/Products/IoT/ESP32-C6/ESP32-C6-EVB/open-source-hardware
+
+repository:
+  url: https://github.com/OLIMEX/ESP32-C6-EVB
+  branch: main
+  board_path: .
+  placeholder: false
+
+revisions:
+  - id: A
+    label: Hardware revision A
+    date: null
+    date_note: Manufacturer revision date was not stated in the official sources reviewed.
+    status: released
+    summary: Public hardware revision documented in the official Olimex repository.
+    changelog: CHANGELOG.md
+    hardware:
+      schematic:
+        path: hardware/REV-A/schematic
+        status: released
+        format: Official schematic PDF link
+      bom:
+        path: hardware/REV-A/bom
+        status: unverified
+        format: Upstream hardware repository reference
+      pcb_source:
+        path: hardware/REV-A/pcb
+        status: released
+        format: KiCad source link
+      gerber:
+        path: hardware/REV-A/gerber
+        status: unverified
+        format: Upstream hardware repository reference
+      mechanical:
+        path: hardware/REV-A/dimensions
+        status: released
+        format: Official dimensions PDF link
+    firmware:
+      path: software
+      compatibility: Hardware revision A; follow each upstream example's toolchain notes
+      status: released
+    diagnostics:
+      test_points: diagnostics/test-points.yaml
+      known_issues: diagnostics/known-issues.yaml
+      known_issues_human: diagnostics/known-issues.md
+      troubleshooting: diagnostics/troubleshooting.yaml
+      troubleshooting_human: diagnostics/troubleshooting.md
+    images:
+      - images/README.md
+
+components: []
+
+visibility:
+  default: public
+  resources:
+    schematic: public
+    bom: public
+    firmware: public
+    gerber: public
+    pcb_source: public
+    diagnostics: public
+  enforcement: metadata_only_in_v0.1
+
+qr:
+  canonical_url: https://scanpcb.org/board/OLIMEX-ESP32-C6-EVB
+  revision_urls:
+    A: https://scanpcb.org/board/OLIMEX-ESP32-C6-EVB/rev/A
+  error_correction: M
+  asset_svg: images/olimex-esp32-c6-evb-rev-a.svg
+
+licenses:
+  project: MIT
+  metadata: MIT
+  documentation: CC-BY-SA-3.0 per upstream repository README; ScanPCB index text MIT
+  hardware: CERN-OHL-1.2 per upstream repository README
+  firmware: GPL-3.0 per upstream repository README
+  note: >-
+    External artifacts remain at their official source. The OSHWA certification
+    record lists CERN-OHL-S-2.0, GPL-3.0-or-later and CC-BY-SA-4.0; verify the
+    license attached to each upstream artifact before redistribution.
+
+extensions:
+  x-physical:
+    dimensions_mm:
+      width: 100
+      height: 70
+  x-certification:
+    scheme: OSHWA
+    uid: BG000116
+    url: https://certification.oshwa.org/bg000116.html
+  x-media:
+    primary:
+      url: https://www.olimex.com/Products/IoT/ESP32-C6/ESP32-C6-EVB/images/thumbs/310x230/ESP32-C6-EVB-1.jpg
+      alt: Olimex ESP32-C6-EVB product photograph
+      attribution: Product image served from the official Olimex product page.
+      source_page: https://www.olimex.com/Products/IoT/ESP32-C6/ESP32-C6-EVB/open-source-hardware
+      reuse: remote_reference_only
+  x-source-note:
+    label: Verified upstream record
+    text: Metadata links official Olimex sources; upstream documents and photographs are not mirrored by ScanPCB.
+    verified_on: "2026-10-20"
+  x-resources:
+    - label: Official product page
+      kind: product
+      url: https://www.olimex.com/Products/IoT/ESP32-C6/ESP32-C6-EVB/open-source-hardware
+      format: Olimex web page
+      status: official
+    - label: User manual
+      kind: documentation
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/blob/main/DOCUMENTS/ESP32-C6-EVB-user-manual.pdf
+      format: PDF
+      status: official
+    - label: Schematic
+      kind: hardware
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/blob/main/HARDWARE/Hardware-revision-A/ESP32-C6-EVB_Rev_A.pdf
+      format: PDF
+      status: official
+    - label: KiCad source
+      kind: hardware
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/tree/main/HARDWARE
+      format: KiCad project
+      status: official
+    - label: Board dimensions
+      kind: mechanical
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/blob/main/HARDWARE/Dimensions/ESP32-C6-EVB_rev_A_dimensions.pdf
+      format: PDF, 100 x 70 mm
+      status: official
+    - label: ESP-IDF examples
+      kind: software
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/tree/main/SOFTWARE/ESP-IDF
+      format: Source repository
+      status: official
+    - label: Arduino examples
+      kind: software
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/tree/main/SOFTWARE/ARDUINO
+      format: Source repository
+      status: official
+    - label: ESPHome configuration
+      kind: software
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/tree/main/SOFTWARE/ESPHOME
+      format: YAML configuration
+      status: official
+    - label: PlatformIO configuration
+      kind: software
+      url: https://github.com/OLIMEX/ESP32-C6-EVB/tree/main/SOFTWARE/PLATFORMIO
+      format: PlatformIO project
+      status: official
+

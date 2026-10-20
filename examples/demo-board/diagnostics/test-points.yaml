@@ -1,0 +1,86 @@
+schema_version: "0.1"
+board_id: SCAN-DEMO-001
+revision: "1.0"
+verification: design_targets_unverified
+test_points:
+  - id: TP1
+    name: VBUS_USB
+    type: dc_voltage
+    location: Near J1 and input protection
+    ground_reference: TP0
+    expected:
+      nominal: 5.0
+      unit: V
+      tolerance_percent: 5
+    conditions: USB-C source connected; board idle
+    instrument: CAT-rated DMM appropriate for the bench setup
+    notes: Confirms input power after the connector.
+
+  - id: TP2
+    name: VCC_3V3
+    type: dc_voltage
+    location: Regulator output near U3
+    ground_reference: TP0
+    expected:
+      nominal: 3.3
+      unit: V
+      tolerance_percent: 3
+      ripple_max:
+        value: 80
+        unit: mVpp
+        bandwidth: 20 MHz
+    conditions: Board powered; firmware heartbeat running
+    instrument: DMM for DC; oscilloscope with short ground spring for ripple
+    notes: Investigate droop during radio activity if resets occur.
+
+  - id: TP3
+    name: MCU_EN
+    type: digital
+    location: ESP32-S3 enable net
+    ground_reference: TP0
+    expected:
+      logic_family: 3V3_CMOS
+      state: high_after_power_on
+      low_max: 0.3
+      high_min: 2.7
+      unit: V
+    conditions: More than 100 ms after VCC_3V3 becomes stable
+    instrument: DMM or oscilloscope
+    notes: A low level holds the MCU in reset.
+
+  - id: TP4
+    name: UART_TX
+    type: uart
+    location: Between U1 and U2
+    ground_reference: TP0
+    expected:
+      logic_family: 3V3_CMOS
+      baud: 115200
+      data_bits: 8
+      parity: none
+      stop_bits: 1
+      idle_state: high
+    conditions: Demo firmware running
+    instrument: Oscilloscope or 3.3 V logic analyzer
+    notes: Expected text includes the board ID and heartbeat.
+
+  - id: TP5
+    name: I2C_SCL
+    type: i2c
+    location: Expansion header clock line
+    ground_reference: TP0
+    expected:
+      logic_family: 3V3_CMOS
+      frequency:
+        nominal: 400
+        unit: kHz
+        tolerance_percent: 10
+      idle_state: high
+    conditions: I2C diagnostic firmware actively polling a peripheral
+    instrument: Oscilloscope or 3.3 V logic analyzer
+    notes: Demonstrates protocol and frequency fields; peripheral is not fitted in the concept BOM.
+
+future_signal_examples:
+  supported_types: [clock, pwm, uart, i2c, spi]
+  fields: [frequency, duty_cycle, logic_family, protocol, setup_conditions]
+

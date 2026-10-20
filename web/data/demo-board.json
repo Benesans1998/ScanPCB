@@ -1,0 +1,460 @@
+{
+  "scanpcb_version": "0.1",
+  "board": {
+    "id": "SCAN-DEMO-001",
+    "name": "ScanPCB Demo Board",
+    "summary": "USB-powered ESP32-S3 reference board for the ScanPCB proof of concept.",
+    "description": "A fictional but technically plausible development and sensor-interface board used to demonstrate persistent board identity, revision-aware documentation, repair data and Git-based collaboration.",
+    "organization": "ScanPCB Community",
+    "designers": [
+      "Benedetta Sansone"
+    ],
+    "status": "prototype",
+    "tags": [
+      "open-hardware",
+      "repairability",
+      "esp32-s3",
+      "usb-c"
+    ],
+    "website": "https://scanpcb.org/board/SCAN-DEMO-001"
+  },
+  "repository": {
+    "url": "https://github.com/OWNER/scanpcb",
+    "branch": "main",
+    "board_path": "examples/demo-board",
+    "placeholder": true
+  },
+  "current_revision": {
+    "id": "1.0",
+    "label": "REV 1.0",
+    "date": "2026-10-20",
+    "status": "prototype",
+    "summary": "Initial proof-of-concept revision for documentation and diagnostics.",
+    "changelog": "CHANGELOG.md",
+    "hardware": {
+      "schematic": {
+        "path": "hardware/REV1/schematic",
+        "status": "placeholder",
+        "format": "KiCad project and PDF export"
+      },
+      "bom": {
+        "path": "hardware/REV1/bom/bom.csv",
+        "status": "draft",
+        "format": "CSV"
+      },
+      "pcb_source": {
+        "path": "hardware/REV1/pcb",
+        "status": "placeholder",
+        "format": "KiCad PCB"
+      },
+      "gerber": {
+        "path": "hardware/REV1/gerber",
+        "status": "placeholder",
+        "format": "Gerber X2 and Excellon"
+      },
+      "assembly": {
+        "path": "hardware/REV1/assembly",
+        "status": "placeholder",
+        "format": "PDF and CSV"
+      }
+    },
+    "firmware": {
+      "path": "firmware",
+      "compatibility": "REV 1.0; Arduino-compatible ESP32-S3 demonstration only",
+      "status": "example"
+    },
+    "diagnostics": {
+      "test_points": "diagnostics/test-points.yaml",
+      "known_issues": "diagnostics/known-issues.yaml",
+      "known_issues_human": "diagnostics/known-issues.md",
+      "troubleshooting": "diagnostics/troubleshooting.yaml",
+      "troubleshooting_human": "diagnostics/troubleshooting.md"
+    },
+    "images": [
+      "images/demo-board-top.svg",
+      "images/scanpcb-demo-board-rev-1.0.svg"
+    ]
+  },
+  "revisions": [
+    {
+      "id": "1.0",
+      "label": "REV 1.0",
+      "date": "2026-10-20",
+      "status": "prototype",
+      "summary": "Initial proof-of-concept revision for documentation and diagnostics."
+    }
+  ],
+  "components": [
+    {
+      "references": [
+        "U1"
+      ],
+      "quantity": 1,
+      "value": "ESP32-S3-WROOM-1-N8",
+      "manufacturer": "Espressif Systems",
+      "mpn": "ESP32-S3-WROOM-1-N8",
+      "package": "Module 41-pin",
+      "description": "Wi-Fi and Bluetooth LE MCU module with 8 MB flash.",
+      "datasheet": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "lifecycle": "active",
+      "alternatives": [],
+      "notes": "Antenna keep-out and module variant must be checked before layout release."
+    },
+    {
+      "references": [
+        "U2"
+      ],
+      "quantity": 1,
+      "value": "CP2102N",
+      "manufacturer": "Silicon Labs",
+      "mpn": "CP2102N-A02-GQFN24",
+      "package": "QFN-24",
+      "description": "USB 2.0 full-speed to UART bridge.",
+      "datasheet": "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf",
+      "lifecycle": "active",
+      "alternatives": [],
+      "notes": "Exact package suffix is part of the MPN and PCB footprint decision."
+    },
+    {
+      "references": [
+        "U3"
+      ],
+      "quantity": 1,
+      "value": "3.3 V",
+      "manufacturer": "Diodes Incorporated",
+      "mpn": "AP2112K-3.3TRG1",
+      "package": "SOT-25",
+      "description": "600 mA low-dropout regulator with enable.",
+      "datasheet": "https://www.diodes.com/assets/Datasheets/AP2112.pdf",
+      "lifecycle": "active",
+      "alternatives": [
+        {
+          "manufacturer": "Microchip Technology",
+          "mpn": "MIC5504-3.3YM5-TR",
+          "qualification": "candidate",
+          "notes": "Not pin-compatible. Requires schematic, footprint and stability review."
+        }
+      ],
+      "notes": "Thermal margin and ESP32-S3 peak current must be validated on real hardware."
+    },
+    {
+      "references": [
+        "J1"
+      ],
+      "quantity": 1,
+      "value": "USB-C USB 2.0",
+      "manufacturer": "GCT",
+      "mpn": "USB4105-GF-A",
+      "package": "SMT top-mount receptacle",
+      "description": "USB Type-C receptacle for power and USB 2.0 data.",
+      "datasheet": "https://gct.co/files/drawings/usb4105.pdf",
+      "lifecycle": "active",
+      "alternatives": [],
+      "notes": "Shield, CC resistors and mechanical retention require design review."
+    }
+  ],
+  "visibility": {
+    "default": "public",
+    "resources": {
+      "schematic": "public",
+      "bom": "public",
+      "firmware": "qr_only",
+      "gerber": "private",
+      "pcb_source": "public",
+      "diagnostics": "public"
+    },
+    "enforcement": "metadata_only_in_v0.1"
+  },
+  "qr": {
+    "canonical_url": "https://scanpcb.org/board/SCAN-DEMO-001",
+    "revision_urls": {
+      "1.0": "https://scanpcb.org/board/SCAN-DEMO-001/rev/1.0"
+    },
+    "error_correction": "M",
+    "asset_svg": "images/scanpcb-demo-board-rev-1.0.svg"
+  },
+  "licenses": {
+    "project": "MIT",
+    "metadata": "MIT",
+    "documentation": "MIT",
+    "hardware": "TBD",
+    "firmware": "MIT",
+    "note": "Hardware licensing must be selected before real design files are released."
+  },
+  "documents": [
+    {
+      "label": "Schematic",
+      "path": "hardware/REV1/schematic",
+      "status": "placeholder",
+      "format": "KiCad project and PDF export",
+      "href": "/examples/demo-board/hardware/REV1/schematic",
+      "external": false
+    },
+    {
+      "label": "Bill of materials",
+      "path": "hardware/REV1/bom/bom.csv",
+      "status": "draft",
+      "format": "CSV",
+      "href": "/examples/demo-board/hardware/REV1/bom/bom.csv",
+      "external": false
+    },
+    {
+      "label": "PCB source",
+      "path": "hardware/REV1/pcb",
+      "status": "placeholder",
+      "format": "KiCad PCB",
+      "href": "/examples/demo-board/hardware/REV1/pcb",
+      "external": false
+    },
+    {
+      "label": "Gerber",
+      "path": "hardware/REV1/gerber",
+      "status": "placeholder",
+      "format": "Gerber X2 and Excellon",
+      "href": "/examples/demo-board/hardware/REV1/gerber",
+      "external": false
+    },
+    {
+      "label": "Assembly",
+      "path": "hardware/REV1/assembly",
+      "status": "placeholder",
+      "format": "PDF and CSV",
+      "href": "/examples/demo-board/hardware/REV1/assembly",
+      "external": false
+    },
+    {
+      "label": "Firmware",
+      "path": "firmware",
+      "status": "example",
+      "format": "Arduino example",
+      "href": "/examples/demo-board/firmware",
+      "external": false
+    },
+    {
+      "label": "Test points",
+      "path": "diagnostics/test-points.yaml",
+      "status": "draft",
+      "format": "YAML",
+      "href": "/examples/demo-board/diagnostics/test-points.yaml",
+      "external": false
+    },
+    {
+      "label": "Known issues",
+      "path": "diagnostics/known-issues.md",
+      "status": "draft",
+      "format": "Markdown",
+      "href": "/examples/demo-board/diagnostics/known-issues.md",
+      "external": false
+    },
+    {
+      "label": "Troubleshooting",
+      "path": "diagnostics/troubleshooting.md",
+      "status": "draft",
+      "format": "Markdown + YAML",
+      "href": "/examples/demo-board/diagnostics/troubleshooting.md",
+      "external": false
+    }
+  ],
+  "test_points": [
+    {
+      "id": "TP1",
+      "name": "VBUS_USB",
+      "type": "dc_voltage",
+      "location": "Near J1 and input protection",
+      "ground_reference": "TP0",
+      "expected": {
+        "nominal": 5,
+        "unit": "V",
+        "tolerance_percent": 5
+      },
+      "conditions": "USB-C source connected; board idle",
+      "instrument": "CAT-rated DMM appropriate for the bench setup",
+      "notes": "Confirms input power after the connector."
+    },
+    {
+      "id": "TP2",
+      "name": "VCC_3V3",
+      "type": "dc_voltage",
+      "location": "Regulator output near U3",
+      "ground_reference": "TP0",
+      "expected": {
+        "nominal": 3.3,
+        "unit": "V",
+        "tolerance_percent": 3,
+        "ripple_max": {
+          "value": 80,
+          "unit": "mVpp",
+          "bandwidth": "20 MHz"
+        }
+      },
+      "conditions": "Board powered; firmware heartbeat running",
+      "instrument": "DMM for DC; oscilloscope with short ground spring for ripple",
+      "notes": "Investigate droop during radio activity if resets occur."
+    },
+    {
+      "id": "TP3",
+      "name": "MCU_EN",
+      "type": "digital",
+      "location": "ESP32-S3 enable net",
+      "ground_reference": "TP0",
+      "expected": {
+        "logic_family": "3V3_CMOS",
+        "state": "high_after_power_on",
+        "low_max": 0.3,
+        "high_min": 2.7,
+        "unit": "V"
+      },
+      "conditions": "More than 100 ms after VCC_3V3 becomes stable",
+      "instrument": "DMM or oscilloscope",
+      "notes": "A low level holds the MCU in reset."
+    },
+    {
+      "id": "TP4",
+      "name": "UART_TX",
+      "type": "uart",
+      "location": "Between U1 and U2",
+      "ground_reference": "TP0",
+      "expected": {
+        "logic_family": "3V3_CMOS",
+        "baud": 115200,
+        "data_bits": 8,
+        "parity": "none",
+        "stop_bits": 1,
+        "idle_state": "high"
+      },
+      "conditions": "Demo firmware running",
+      "instrument": "Oscilloscope or 3.3 V logic analyzer",
+      "notes": "Expected text includes the board ID and heartbeat."
+    },
+    {
+      "id": "TP5",
+      "name": "I2C_SCL",
+      "type": "i2c",
+      "location": "Expansion header clock line",
+      "ground_reference": "TP0",
+      "expected": {
+        "logic_family": "3V3_CMOS",
+        "frequency": {
+          "nominal": 400,
+          "unit": "kHz",
+          "tolerance_percent": 10
+        },
+        "idle_state": "high"
+      },
+      "conditions": "I2C diagnostic firmware actively polling a peripheral",
+      "instrument": "Oscilloscope or 3.3 V logic analyzer",
+      "notes": "Demonstrates protocol and frequency fields; peripheral is not fitted in the concept BOM."
+    }
+  ],
+  "test_points_verification": "design_targets_unverified",
+  "known_issues": [
+    {
+      "id": "KI-001",
+      "title": "Random reset during Wi-Fi transmit burst",
+      "status": "illustrative_unverified",
+      "severity": "medium",
+      "affected_revisions": [
+        "1.0"
+      ],
+      "symptom": "Board restarts intermittently when the radio begins a high-current transmit burst.",
+      "possible_causes": [
+        "Insufficient local bulk capacitance near the ESP32-S3 module.",
+        "Excessive regulator or interconnect impedance.",
+        "AP2112 thermal or transient margin not validated for the load profile."
+      ],
+      "test": {
+        "test_point": "TP2",
+        "procedure": "Observe VCC_3V3 with a short-ground oscilloscope probe while forcing repeated Wi-Fi transmissions."
+      },
+      "expected_result": "3.3 V within 3 percent, with ripple and droop remaining inside the validated power budget.",
+      "action": "Review regulator margin, placement, decoupling network and power-plane impedance before changing parts.",
+      "safety": "Use appropriate bench practices and do not short adjacent fine-pitch nodes."
+    }
+  ],
+  "troubleshooting": {
+    "id": "POWER-ON",
+    "title": "Board does not power on",
+    "start": "check_visual",
+    "nodes": {
+      "check_visual": {
+        "type": "action",
+        "instruction": "Disconnect power and inspect for shorts, reversed parts, debris or visible damage.",
+        "next": "safe_to_power"
+      },
+      "safe_to_power": {
+        "type": "decision",
+        "question": "Is the board safe to energize with a current-limited supply?",
+        "outcomes": {
+          "no": "stop_unsafe",
+          "yes": "measure_tp1"
+        }
+      },
+      "stop_unsafe": {
+        "type": "result",
+        "status": "stop",
+        "conclusion": "Do not apply power. Repair or escalate the visible fault first."
+      },
+      "measure_tp1": {
+        "type": "measurement",
+        "test_point": "TP1",
+        "question": "Is VBUS_USB within 5.0 V plus or minus 5 percent?",
+        "outcomes": {
+          "no": "input_fault",
+          "yes": "measure_tp2"
+        }
+      },
+      "input_fault": {
+        "type": "result",
+        "status": "fault_found",
+        "conclusion": "Check the cable, source, J1, CC resistors and input protection path."
+      },
+      "measure_tp2": {
+        "type": "measurement",
+        "test_point": "TP2",
+        "question": "Is VCC_3V3 within 3.3 V plus or minus 3 percent?",
+        "outcomes": {
+          "no": "regulator_path",
+          "yes": "measure_tp3"
+        }
+      },
+      "regulator_path": {
+        "type": "result",
+        "status": "investigate",
+        "conclusion": "Check U3 enable, input voltage, output short and regulator thermal condition."
+      },
+      "measure_tp3": {
+        "type": "measurement",
+        "test_point": "TP3",
+        "question": "Is MCU_EN high after power-on?",
+        "outcomes": {
+          "no": "reset_path",
+          "yes": "firmware_path"
+        }
+      },
+      "reset_path": {
+        "type": "result",
+        "status": "investigate",
+        "conclusion": "Inspect the enable pull-up, reset network and any supervisor circuitry."
+      },
+      "firmware_path": {
+        "type": "result",
+        "status": "continue",
+        "conclusion": "Power rails and enable appear valid. Continue with UART boot logging at TP4."
+      }
+    }
+  },
+  "physical": null,
+  "certification": null,
+  "media": {
+    "url": "/web/assets/demo-board-top.svg",
+    "alt": "Illustrative top view of the ScanPCB Demo Board",
+    "attribution": "Concept illustration generated for the ScanPCB demo.",
+    "reuse": "local_demo_asset"
+  },
+  "source_note": {
+    "label": "Prototype record",
+    "text": "This is a fictional documentation example. Placeholder hardware files are labeled and electrical targets are not physical measurements."
+  },
+  "manifest_href": "/examples/demo-board/scanpcb.yaml",
+  "source": "examples/demo-board/scanpcb.yaml"
+}

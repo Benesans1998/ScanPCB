@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ScanPCB board identity, official sources and revision documentation.">
+    <meta name="theme-color" content="#f4f6f3">
+    <title>ScanPCB board record</title>
+    <link rel="stylesheet" href="/web/styles.css">
+    <script type="module" src="/web/board.js"></script>
+  </head>
+  <body class="board-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="ScanPCB home">
+        <span class="wordmark-mark" aria-hidden="true">S</span>
+        <span>ScanPCB</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#documentation">Documentation</a>
+        <a href="#components">Components</a>
+        <a href="#diagnostics">Diagnostics</a>
+      </nav>
+      <a class="header-action" data-manifest-link href="/">View YAML</a>
+    </header>
+
+    <main id="main" class="board-shell" aria-live="polite">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Boards</a><span aria-hidden="true">/</span><span data-breadcrumb-id></span>
+      </nav>
+
+      <div id="board-loading" class="loading-state" aria-busy="true" aria-label="Loading board data">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-panel"></div>
+      </div>
+
+      <div id="board-error" class="error-state" hidden>
+        <p class="eyebrow">Data unavailable</p>
+        <h1>The board manifest could not be loaded.</h1>
+        <p>Run <code>npm run build</code> and serve the repository with <code>npm run serve</code>.</p>
+        <button class="button button-primary" type="button" data-retry>Retry</button>
+      </div>
+
+      <div id="board-content" hidden>
+        <section class="board-masthead">
+          <div class="board-title-block">
+            <div class="board-flags">
+              <span class="flag flag-accent" data-board-status></span>
+              <span class="flag" data-spec-version></span>
+            </div>
+            <h1 data-board-name></h1>
+            <p class="board-summary" data-board-summary></p>
+            <dl class="identity-grid">
+              <div><dt>Board ID</dt><dd data-board-id></dd></div>
+              <div><dt>Revision</dt><dd data-revision></dd></div>
+              <div><dt>Revision date</dt><dd data-revision-date></dd></div>
+              <div><dt data-organization-label>Organization</dt><dd data-organization></dd></div>
+              <div data-dimensions-row hidden><dt>Dimensions</dt><dd data-dimensions></dd></div>
+              <div data-certification-row hidden><dt>Certification</dt><dd><a class="identity-link" data-certification></a></dd></div>
+            </dl>
+          </div>
+          <figure class="board-figure">
+            <img data-board-image src="/web/assets/demo-board-top.svg" alt="Board view" width="960" height="560">
+            <div class="image-fallback" data-image-fallback hidden>
+              <strong>Image unavailable offline</strong>
+              <span>Use the official product page link below.</span>
+            </div>
+            <figcaption data-image-caption></figcaption>
+          </figure>
+        </section>
+
+        <aside class="prototype-notice" role="note">
+          <strong data-source-label></strong>
+          <p data-source-text></p>
+        </aside>
+
+        <section class="board-overview" aria-label="Board description and repository">
+          <div>
+            <h2>Description</h2>
+            <p data-board-description></p>
+          </div>
+          <div>
+            <h2>Official sources</h2>
+            <p data-repository-status></p>
+            <div class="source-links">
+              <a class="text-link" data-official-page></a>
+              <a class="text-link" data-repository-link>Repository pending publication</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="board-section" id="documentation">
+          <div class="board-section-heading">
+            <h2>Documentation</h2>
+            <p>Revision-specific source, manufacturing and maintenance files.</p>
+          </div>
+          <div class="document-list" data-documents></div>
+        </section>
+
+        <section class="board-section" id="components">
+          <div class="board-section-heading">
+            <h2>Principal components</h2>
+            <p>Component metadata is shown only when it is explicitly present in the board manifest.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Ref</th><th>Part</th><th>Manufacturer</th><th>Package</th><th>Lifecycle</th><th>Source</th></tr>
+              </thead>
+              <tbody data-components></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="board-section diagnostics-section" id="diagnostics">
+          <div class="board-section-heading">
+            <h2>Test points</h2>
+            <p data-testpoint-verification></p>
+          </div>
+          <div class="testpoint-grid" data-testpoints></div>
+        </section>
+
+        <section class="board-section issue-section">
+          <div class="board-section-heading">
+            <h2>Known issues</h2>
+            <p>Structured observations and verification status for this revision.</p>
+          </div>
+          <div data-known-issues></div>
+        </section>
+
+        <section class="board-section troubleshoot-section">
+          <div class="board-section-heading">
+            <h2>Troubleshooting</h2>
+            <p>A machine-readable decision tree rendered for the workbench.</p>
+          </div>
+          <div class="troubleshoot-flow" data-troubleshooting></div>
+        </section>
+
+        <section class="board-section history-section">
+          <div class="board-section-heading">
+            <h2>Revision history</h2>
+            <p>Previous revisions remain addressable as the hardware evolves.</p>
+          </div>
+          <div class="revision-list" data-revisions></div>
+        </section>
+
+        <section class="record-footer">
+          <div>
+            <h2>Portable by design</h2>
+            <p>This page is generated from open files in the board repository.</p>
+          </div>
+          <div class="record-actions">
+            <a class="button button-secondary" data-footer-manifest-link href="/">Open manifest</a>
+            <a class="button button-primary" href="/CONTRIBUTING.md">Propose a change</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer shell compact-footer">
+      <a class="wordmark wordmark-small" href="/">ScanPCB</a>
+      <p>Board identity that survives the platform.</p>
+    </footer>
+  </body>
+</html>
+

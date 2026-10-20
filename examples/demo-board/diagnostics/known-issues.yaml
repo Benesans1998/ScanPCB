@@ -1,0 +1,21 @@
+schema_version: "0.1"
+board_id: SCAN-DEMO-001
+revision: "1.0"
+issues:
+  - id: KI-001
+    title: Random reset during Wi-Fi transmit burst
+    status: illustrative_unverified
+    severity: medium
+    affected_revisions: ["1.0"]
+    symptom: Board restarts intermittently when the radio begins a high-current transmit burst.
+    possible_causes:
+      - Insufficient local bulk capacitance near the ESP32-S3 module.
+      - Excessive regulator or interconnect impedance.
+      - AP2112 thermal or transient margin not validated for the load profile.
+    test:
+      test_point: TP2
+      procedure: Observe VCC_3V3 with a short-ground oscilloscope probe while forcing repeated Wi-Fi transmissions.
+    expected_result: 3.3 V within 3 percent, with ripple and droop remaining inside the validated power budget.
+    action: Review regulator margin, placement, decoupling network and power-plane impedance before changing parts.
+    safety: Use appropriate bench practices and do not short adjacent fine-pitch nodes.
+

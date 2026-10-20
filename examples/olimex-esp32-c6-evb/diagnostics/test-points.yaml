@@ -1,0 +1,9 @@
+schema_version: "0.1"
+board_id: OLIMEX-ESP32-C6-EVB
+revision: A
+verification: not_indexed_from_upstream_schematic
+note: >-
+  ScanPCB does not invent test-point values. Use the official revision A schematic
+  until maintainers review and import verified measurement points.
+test_points: []
+

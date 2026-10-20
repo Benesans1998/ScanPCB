@@ -1,0 +1,38 @@
+schema_version: "0.1"
+board_id: OLIMEX-ESP32-C6-EVB
+revision: A
+source:
+  title: Olimex ESP32-C6-EVB product FAQ
+  url: https://www.olimex.com/Products/IoT/ESP32-C6/ESP32-C6-EVB/open-source-hardware
+  verified_on: "2026-10-20"
+issues:
+  - id: FAQ-USB-BOOT
+    title: USB repeatedly connects and disconnects on an empty board
+    status: manufacturer_faq
+    severity: info
+    affected_revisions: [A]
+    symptom: USB enumerates and disconnects repeatedly; some relay LEDs may blink when flash memory is empty.
+    possible_causes:
+      - Empty flash memory causes the documented boot behavior.
+    test:
+      test_point: null
+      procedure: Confirm whether the module has valid application firmware.
+    expected_result: This behavior is expected before valid firmware is uploaded.
+    action: Hold BUT1, press and release RST1, then release BUT1 to enter upload mode.
+    safety: Relays can switch hazardous loads. Develop with high-voltage terminals disconnected.
+
+  - id: FAQ-USB-CDC
+    title: No serial output over the built-in USB connection
+    status: manufacturer_faq
+    severity: low
+    affected_revisions: [A]
+    symptom: The board programs but no expected serial data appears over USB.
+    possible_causes:
+      - USB CDC is disabled in the selected software tool configuration.
+    test:
+      test_point: null
+      procedure: Inspect the target and USB CDC settings in the active ESP32 toolchain.
+    expected_result: A CDC serial port is exposed after USB CDC support is enabled by the firmware configuration.
+    action: Enable USB CDC in the toolchain; in Arduino IDE use the relevant option in the Tools menu.
+    safety: This is a software configuration check and does not require probing the energized relay area.
+

@@ -1,0 +1,293 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://scanpcb.org/schema/scanpcb-0.1.schema.json"
+title: ScanPCB board manifest
+description: Portable identity and revision-aware documentation for an electronic board.
+type: object
+additionalProperties: false
+required:
+  - scanpcb_version
+  - board
+  - repository
+  - revisions
+  - components
+  - visibility
+  - qr
+  - licenses
+properties:
+  scanpcb_version:
+    type: string
+    const: "0.1"
+  board:
+    $ref: "#/$defs/board"
+  repository:
+    $ref: "#/$defs/repository"
+  revisions:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/revision"
+  components:
+    type: array
+    items:
+      $ref: "#/$defs/component"
+  visibility:
+    $ref: "#/$defs/visibility"
+  qr:
+    $ref: "#/$defs/qr"
+  licenses:
+    $ref: "#/$defs/licenses"
+  extensions:
+    type: object
+    propertyNames:
+      pattern: "^x-"
+    additionalProperties: true
+$defs:
+  relativePath:
+    type: string
+    minLength: 1
+    not:
+      pattern: "^(?:[a-zA-Z]+:|/|\\\\)"
+  uri:
+    type: string
+    format: uri
+  board:
+    type: object
+    additionalProperties: false
+    required: [id, name, summary, description, organization, designers, status]
+    properties:
+      id:
+        type: string
+        pattern: "^[A-Z0-9]+(?:-[A-Z0-9]+)+$"
+      name:
+        type: string
+        minLength: 1
+      summary:
+        type: string
+        minLength: 1
+        maxLength: 180
+      description:
+        type: string
+        minLength: 1
+      organization:
+        type: string
+        minLength: 1
+      manufacturer:
+        type: string
+        minLength: 1
+      designers:
+        type: array
+        minItems: 1
+        items:
+          type: string
+          minLength: 1
+      status:
+        enum: [concept, prototype, active, deprecated, archived]
+      tags:
+        type: array
+        uniqueItems: true
+        items:
+          type: string
+      website:
+        $ref: "#/$defs/uri"
+  repository:
+    type: object
+    additionalProperties: false
+    required: [url, branch, board_path, placeholder]
+    properties:
+      url:
+        $ref: "#/$defs/uri"
+      branch:
+        type: string
+        minLength: 1
+      board_path:
+        $ref: "#/$defs/relativePath"
+      placeholder:
+        type: boolean
+  revision:
+    type: object
+    additionalProperties: false
+    required: [id, label, date, status, summary, changelog, hardware, firmware, diagnostics, images]
+    properties:
+      id:
+        type: string
+        pattern: "^(?:[0-9]+(?:\\.[0-9]+){1,2}|[A-Z][A-Z0-9.-]*)$"
+      label:
+        type: string
+        minLength: 1
+      date:
+        oneOf:
+          - type: string
+            format: date
+          - type: "null"
+      date_note:
+        type: string
+      status:
+        enum: [draft, prototype, released, deprecated, obsolete]
+      summary:
+        type: string
+        minLength: 1
+      changelog:
+        $ref: "#/$defs/relativePath"
+      hardware:
+        type: object
+        additionalProperties: false
+        required: [schematic, bom, pcb_source, gerber]
+        properties:
+          schematic:
+            $ref: "#/$defs/artifact"
+          bom:
+            $ref: "#/$defs/artifact"
+          pcb_source:
+            $ref: "#/$defs/artifact"
+          gerber:
+            $ref: "#/$defs/artifact"
+          assembly:
+            $ref: "#/$defs/artifact"
+          mechanical:
+            $ref: "#/$defs/artifact"
+      firmware:
+        type: object
+        additionalProperties: false
+        required: [path, compatibility, status]
+        properties:
+          path:
+            $ref: "#/$defs/relativePath"
+          compatibility:
+            type: string
+            minLength: 1
+          status:
+            enum: [placeholder, example, validated, released]
+      diagnostics:
+        type: object
+        additionalProperties: false
+        required: [test_points, known_issues, known_issues_human, troubleshooting, troubleshooting_human]
+        properties:
+          test_points:
+            $ref: "#/$defs/relativePath"
+          known_issues:
+            $ref: "#/$defs/relativePath"
+          known_issues_human:
+            $ref: "#/$defs/relativePath"
+          troubleshooting:
+            $ref: "#/$defs/relativePath"
+          troubleshooting_human:
+            $ref: "#/$defs/relativePath"
+      images:
+        type: array
+        items:
+          $ref: "#/$defs/relativePath"
+  artifact:
+    type: object
+    additionalProperties: false
+    required: [path, status, format]
+    properties:
+      path:
+        $ref: "#/$defs/relativePath"
+      status:
+        enum: [placeholder, draft, unverified, validated, released]
+      format:
+        type: string
+        minLength: 1
+      sha256:
+        type: string
+        pattern: "^[a-fA-F0-9]{64}$"
+  component:
+    type: object
+    additionalProperties: false
+    required: [references, quantity, value, manufacturer, mpn, package, description, datasheet, lifecycle, alternatives]
+    properties:
+      references:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          type: string
+          pattern: "^[A-Z]+[0-9]+$"
+      quantity:
+        type: integer
+        minimum: 1
+      value:
+        type: string
+      manufacturer:
+        type: string
+        minLength: 1
+      mpn:
+        type: string
+        minLength: 1
+      package:
+        type: string
+        minLength: 1
+      description:
+        type: string
+        minLength: 1
+      datasheet:
+        $ref: "#/$defs/uri"
+      lifecycle:
+        enum: [active, nrnd, eol, obsolete, unknown]
+      alternatives:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [manufacturer, mpn, qualification, notes]
+          properties:
+            manufacturer:
+              type: string
+            mpn:
+              type: string
+            qualification:
+              enum: [candidate, reviewed, validated, rejected]
+            notes:
+              type: string
+      notes:
+        type: string
+  visibilityLevel:
+    enum: [public, qr_only, private]
+  visibility:
+    type: object
+    additionalProperties: false
+    required: [default, resources, enforcement]
+    properties:
+      default:
+        $ref: "#/$defs/visibilityLevel"
+      resources:
+        type: object
+        additionalProperties:
+          $ref: "#/$defs/visibilityLevel"
+      enforcement:
+        type: string
+        const: metadata_only_in_v0.1
+  qr:
+    type: object
+    additionalProperties: false
+    required: [canonical_url, revision_urls, error_correction, asset_svg]
+    properties:
+      canonical_url:
+        $ref: "#/$defs/uri"
+      revision_urls:
+        type: object
+        minProperties: 1
+        additionalProperties:
+          $ref: "#/$defs/uri"
+      error_correction:
+        enum: [L, M, Q, H]
+      asset_svg:
+        $ref: "#/$defs/relativePath"
+  licenses:
+    type: object
+    additionalProperties: false
+    required: [project, metadata, documentation, hardware, firmware, note]
+    properties:
+      project:
+        type: string
+      metadata:
+        type: string
+      documentation:
+        type: string
+      hardware:
+        type: string
+      firmware:
+        type: string
+      note:
+        type: string
+

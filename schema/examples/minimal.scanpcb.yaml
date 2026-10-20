@@ -1,0 +1,56 @@
+scanpcb_version: "0.1"
+board:
+  id: ACME-SENSOR-001
+  name: Minimal Sensor Board
+  summary: Minimal conforming ScanPCB example.
+  description: A compact example used only to illustrate required fields.
+  organization: Example Organization
+  designers: [Example Designer]
+  status: concept
+repository:
+  url: https://example.org/example/minimal-sensor
+  branch: main
+  board_path: .
+  placeholder: true
+revisions:
+  - id: "1.0"
+    label: REV 1.0
+    date: "2026-10-20"
+    status: draft
+    summary: Initial example revision.
+    changelog: CHANGELOG.md
+    hardware:
+      schematic: { path: hardware/REV1/schematic, status: placeholder, format: directory }
+      bom: { path: hardware/REV1/bom.csv, status: placeholder, format: CSV }
+      pcb_source: { path: hardware/REV1/pcb, status: placeholder, format: directory }
+      gerber: { path: hardware/REV1/gerber, status: placeholder, format: Gerber X2 }
+    firmware:
+      path: firmware
+      compatibility: REV 1.0 only
+      status: placeholder
+    diagnostics:
+      test_points: diagnostics/test-points.yaml
+      known_issues: diagnostics/known-issues.yaml
+      known_issues_human: diagnostics/known-issues.md
+      troubleshooting: diagnostics/troubleshooting.yaml
+      troubleshooting_human: diagnostics/troubleshooting.md
+    images: []
+components: []
+visibility:
+  default: public
+  resources: {}
+  enforcement: metadata_only_in_v0.1
+qr:
+  canonical_url: https://example.org/board/ACME-SENSOR-001
+  revision_urls:
+    "1.0": https://example.org/board/ACME-SENSOR-001/rev/1.0
+  error_correction: M
+  asset_svg: images/qr.svg
+licenses:
+  project: MIT
+  metadata: CC0-1.0
+  documentation: CC-BY-4.0
+  hardware: TBD
+  firmware: TBD
+  note: Replace TBD before publishing redistributable design files.
+

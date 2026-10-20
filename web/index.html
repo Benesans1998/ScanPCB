@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ScanPCB connects a physical electronic board to portable, revision-aware technical documentation.">
+    <meta name="theme-color" content="#f4f6f3">
+    <title>ScanPCB | One board. One QR. Open documentation.</title>
+    <link rel="stylesheet" href="/web/styles.css">
+    <script type="module" src="/web/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="ScanPCB home">
+        <span class="wordmark-mark" aria-hidden="true">S</span>
+        <span>ScanPCB</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="/docs/scanpcb-spec.md">Specification</a>
+        <a href="/CONTRIBUTING.md">Contribute</a>
+      </nav>
+      <a class="header-action" href="/board/OLIMEX-ESP32-C6-EVB">Explore example</a>
+    </header>
+
+    <main id="main">
+      <section class="hero shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Open hardware documentation</p>
+          <h1>The documentation should last as long as the board.</h1>
+          <p class="hero-lede">One board. One QR. Everything needed to understand, repair and improve it.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="/board/OLIMEX-ESP32-C6-EVB">Explore real board</a>
+            <a class="button button-secondary" href="/docs/scanpcb-spec.md">Read the specification</a>
+          </div>
+        </div>
+
+        <div class="identity-plate reveal" aria-label="Olimex ESP32-C6-EVB identity plate">
+          <div class="plate-header">
+            <span>BOARD IDENTITY</span>
+            <span class="status-line">RELEASED</span>
+          </div>
+          <div class="plate-body">
+            <img src="/web/assets/olimex-esp32-c6-evb-qr.svg" alt="QR code for Olimex ESP32-C6-EVB revision A" width="184" height="184">
+            <div class="plate-data">
+              <p><span>BOARD</span><strong>OLIMEX-ESP32-C6-EVB</strong></p>
+              <p><span>REVISION</span><strong>A</strong></p>
+              <p><span>FORMAT</span><strong>ScanPCB 0.1</strong></p>
+              <p><span>ACCESS</span><strong>PUBLIC</strong></p>
+            </div>
+          </div>
+          <div class="plate-footer">scanpcb.org/board/OLIMEX-ESP32-C6-EVB</div>
+        </div>
+      </section>
+
+      <section class="manifesto-band">
+        <div class="shell manifesto-inner reveal">
+          <p>An electronic board should not become incomprehensible when its designer disappears.</p>
+          <span>ScanPCB principle 001</span>
+        </div>
+      </section>
+
+      <section class="flow-section shell" id="how-it-works">
+        <div class="section-intro reveal">
+          <p class="eyebrow">A durable link</p>
+          <h2>From physical hardware to maintainable knowledge.</h2>
+          <p>The QR is only the entry point. The valuable part is a repository that remains portable, reviewable and complete.</p>
+        </div>
+        <ol class="signal-flow reveal" aria-label="ScanPCB documentation flow">
+          <li><span>01</span><strong>PCB</strong><small>Physical board</small></li>
+          <li><span>02</span><strong>QR</strong><small>Stable entry point</small></li>
+          <li><span>03</span><strong>Board ID</strong><small>Persistent identity</small></li>
+          <li><span>04</span><strong>Documentation</strong><small>Revision-aware files</small></li>
+          <li><span>05</span><strong>Repair</strong><small>Maintain and improve</small></li>
+        </ol>
+      </section>
+
+      <section class="source-section shell">
+        <div class="source-visual reveal">
+          <img data-remote-board-photo src="https://www.olimex.com/Products/IoT/ESP32-C6/ESP32-C6-EVB/images/thumbs/310x230/ESP32-C6-EVB-1.jpg" alt="Olimex ESP32-C6-EVB product photograph" width="620" height="460">
+          <div class="image-fallback" data-home-image-fallback hidden>
+            <strong>Official image unavailable offline</strong>
+            <span>The board record and source links remain accessible.</span>
+          </div>
+          <p class="source-credit">Product image served from the official Olimex product page.</p>
+        </div>
+        <div class="source-copy reveal">
+          <h2>The repository is the source of truth.</h2>
+          <p>YAML describes identity and revisions. Markdown carries repair knowledge. CSV keeps the BOM portable. Native design files stay with the board.</p>
+          <ul class="plain-checks">
+            <li>Readable without a proprietary service</li>
+            <li>Versioned and reviewed with Git</li>
+            <li>Exportable as ordinary files</li>
+            <li>Ready for community contributions</li>
+          </ul>
+          <a class="text-link" href="/examples/olimex-esp32-c6-evb/scanpcb.yaml">Inspect the Olimex scanpcb.yaml <span aria-hidden="true">-&gt;</span></a>
+          <a class="text-link secondary-example" href="/board/SCAN-DEMO-001/rev/1.0">Also view the fictional test fixture <span aria-hidden="true">-&gt;</span></a>
+        </div>
+      </section>
+
+      <section class="principles-section shell">
+        <div class="principles-heading reveal">
+          <h2>Designed for the workbench, not platform lock-in.</h2>
+        </div>
+        <div class="principle-list reveal">
+          <article>
+            <span>Open formats</span>
+            <h3>Files first</h3>
+            <p>YAML, Markdown, CSV, SVG and native EDA sources remain useful outside ScanPCB.</p>
+          </article>
+          <article>
+            <span>Traceability</span>
+            <h3>Every revision stays visible</h3>
+            <p>Schematic, PCB, firmware and known issues can follow the hardware they actually describe.</p>
+          </article>
+          <article>
+            <span>Repair knowledge</span>
+            <h3>Measurements have context</h3>
+            <p>Test points record conditions, instruments, units, tolerances and expected signal behavior.</p>
+          </article>
+          <article>
+            <span>Collaboration</span>
+            <h3>Git is enough to begin</h3>
+            <p>Issues and pull requests already support proposals, review, corrections and history.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="closing-cta shell reveal">
+        <div>
+          <p class="eyebrow">Proof of concept v0.1</p>
+          <h2>Scan the board. Keep the knowledge alive.</h2>
+        </div>
+        <a class="button button-primary" href="/board/OLIMEX-ESP32-C6-EVB/rev/A">Open the board record</a>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <div>
+        <a class="wordmark wordmark-small" href="/">ScanPCB</a>
+        <p>Open, portable board documentation.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/README.md">Project</a>
+        <a href="/docs/architecture.md">Architecture</a>
+        <a href="/docs/roadmap.md">Roadmap</a>
+        <a href="/CONTRIBUTING.md">Contribute</a>
+      </div>
+      <p class="copyright">MIT licensed. <span data-year>2026</span> ScanPCB contributors.</p>
+    </footer>
+  </body>
+</html>
+

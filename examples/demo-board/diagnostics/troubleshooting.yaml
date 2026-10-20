@@ -1,0 +1,60 @@
+schema_version: "0.1"
+board_id: SCAN-DEMO-001
+revision: "1.0"
+tree:
+  id: POWER-ON
+  title: Board does not power on
+  start: check_visual
+  nodes:
+    check_visual:
+      type: action
+      instruction: Disconnect power and inspect for shorts, reversed parts, debris or visible damage.
+      next: safe_to_power
+    safe_to_power:
+      type: decision
+      question: Is the board safe to energize with a current-limited supply?
+      outcomes:
+        no: stop_unsafe
+        yes: measure_tp1
+    stop_unsafe:
+      type: result
+      status: stop
+      conclusion: Do not apply power. Repair or escalate the visible fault first.
+    measure_tp1:
+      type: measurement
+      test_point: TP1
+      question: Is VBUS_USB within 5.0 V plus or minus 5 percent?
+      outcomes:
+        no: input_fault
+        yes: measure_tp2
+    input_fault:
+      type: result
+      status: fault_found
+      conclusion: Check the cable, source, J1, CC resistors and input protection path.
+    measure_tp2:
+      type: measurement
+      test_point: TP2
+      question: Is VCC_3V3 within 3.3 V plus or minus 3 percent?
+      outcomes:
+        no: regulator_path
+        yes: measure_tp3
+    regulator_path:
+      type: result
+      status: investigate
+      conclusion: Check U3 enable, input voltage, output short and regulator thermal condition.
+    measure_tp3:
+      type: measurement
+      test_point: TP3
+      question: Is MCU_EN high after power-on?
+      outcomes:
+        no: reset_path
+        yes: firmware_path
+    reset_path:
+      type: result
+      status: investigate
+      conclusion: Inspect the enable pull-up, reset network and any supervisor circuitry.
+    firmware_path:
+      type: result
+      status: continue
+      conclusion: Power rails and enable appear valid. Continue with UART boot logging at TP4.
+

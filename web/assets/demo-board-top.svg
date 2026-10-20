@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative ScanPCB Demo Board top view</title>
+  <desc id="desc">A not-to-scale green circuit board concept with labeled ESP32-S3, USB-C, USB-UART and power sections.</desc>
+  <rect width="960" height="560" fill="#e8ede8"/>
+  <g transform="translate(80 55)">
+    <rect x="0" y="0" width="800" height="450" rx="28" fill="#123c2f" stroke="#08271e" stroke-width="8"/>
+    <circle cx="40" cy="40" r="13" fill="#e8ede8" stroke="#6e8d81" stroke-width="5"/>
+    <circle cx="760" cy="40" r="13" fill="#e8ede8" stroke="#6e8d81" stroke-width="5"/>
+    <circle cx="40" cy="410" r="13" fill="#e8ede8" stroke="#6e8d81" stroke-width="5"/>
+    <circle cx="760" cy="410" r="13" fill="#e8ede8" stroke="#6e8d81" stroke-width="5"/>
+    <g fill="none" stroke="#2c6652" stroke-width="3">
+      <path d="M125 114 H230 V225 H310"/>
+      <path d="M125 145 H205 V255 H310"/>
+      <path d="M488 132 H615 V290 H690"/>
+      <path d="M488 300 H570 V370 H690"/>
+      <path d="M310 340 H240 V385 H135"/>
+    </g>
+    <rect x="310" y="88" width="178" height="258" rx="10" fill="#1b2220" stroke="#9ccab7" stroke-width="3"/>
+    <rect x="338" y="112" width="122" height="88" rx="5" fill="#b6b7b0"/>
+    <g fill="#d6b657">
+      <rect x="300" y="110" width="10" height="12"/><rect x="300" y="138" width="10" height="12"/><rect x="300" y="166" width="10" height="12"/><rect x="300" y="194" width="10" height="12"/><rect x="300" y="222" width="10" height="12"/><rect x="300" y="250" width="10" height="12"/><rect x="300" y="278" width="10" height="12"/><rect x="300" y="306" width="10" height="12"/>
+      <rect x="488" y="110" width="10" height="12"/><rect x="488" y="138" width="10" height="12"/><rect x="488" y="166" width="10" height="12"/><rect x="488" y="194" width="10" height="12"/><rect x="488" y="222" width="10" height="12"/><rect x="488" y="250" width="10" height="12"/><rect x="488" y="278" width="10" height="12"/><rect x="488" y="306" width="10" height="12"/>
+    </g>
+    <rect x="-18" y="174" width="118" height="96" rx="12" fill="#c4c9c7" stroke="#68706d" stroke-width="4"/>
+    <rect x="0" y="194" width="56" height="56" rx="5" fill="#3d4341"/>
+    <rect x="130" y="178" width="92" height="92" rx="8" fill="#202624" stroke="#9ccab7" stroke-width="3"/>
+    <rect x="590" y="105" width="82" height="62" rx="6" fill="#202624" stroke="#9ccab7" stroke-width="3"/>
+    <circle cx="674" cy="355" r="23" fill="#91d4a9" stroke="#d5f1df" stroke-width="5"/>
+    <g fill="#d6b657">
+      <circle cx="118" cy="340" r="9"/><circle cx="166" cy="340" r="9"/><circle cx="214" cy="340" r="9"/><circle cx="262" cy="340" r="9"/>
+      <circle cx="548" cy="388" r="9"/><circle cx="596" cy="388" r="9"/><circle cx="644" cy="388" r="9"/><circle cx="692" cy="388" r="9"/>
+    </g>
+    <g fill="#edf5f1" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">
+      <text x="335" y="230" font-size="19">ESP32-S3</text>
+      <text x="335" y="255" font-size="13">U1 / MAIN MCU</text>
+      <text x="137" y="298" font-size="13">U2 USB-UART</text>
+      <text x="590" y="92" font-size="13">U3 3V3 LDO</text>
+      <text x="610" y="406" font-size="13">TEST POINTS</text>
+      <text x="18" y="295" font-size="13">J1 USB-C</text>
+      <text x="330" y="410" font-size="20">SCAN-DEMO-001 / REV 1.0</text>
+    </g>
+  </g>
+  <text x="80" y="535" fill="#3c4b45" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">ILLUSTRATIVE CONCEPT / NOT TO SCALE / NOT FOR MANUFACTURING</text>
+</svg>
+

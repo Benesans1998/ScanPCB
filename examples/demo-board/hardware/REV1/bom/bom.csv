@@ -1,0 +1,9 @@
+Reference,Quantity,Value,MPN,Manufacturer,Package,Description,Datasheet,Lifecycle Status,Alternative Parts,Notes
+U1,1,ESP32-S3-WROOM-1-N8,ESP32-S3-WROOM-1-N8,Espressif Systems,Module 41-pin,Wi-Fi and Bluetooth LE MCU module,https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf,Active,None,Antenna keep-out must be respected
+U2,1,CP2102N,CP2102N-A02-GQFN24,Silicon Labs,QFN-24,USB 2.0 to UART bridge,https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf,Active,None,Confirm package suffix before footprint release
+U3,1,3.3 V,AP2112K-3.3TRG1,Diodes Incorporated,SOT-25,600 mA low-dropout regulator,https://www.diodes.com/assets/Datasheets/AP2112.pdf,Active,MIC5504-3.3YM5-TR candidate only,Thermal and transient validation required
+J1,1,USB-C USB 2.0,USB4105-GF-A,GCT,SMT top-mount receptacle,USB Type-C receptacle for power and USB 2.0 data,https://gct.co/files/drawings/usb4105.pdf,Active,None,Review mechanical retention and CC resistors
+D1,1,Green status LED,LTST-C190KGKT,Lite-On,0603,Green indicator LED,https://optoelectronics.liteon.com/upload/download/DS22-2000-074/LTST-C190KGKT.PDF,Active,None,Illustrative secondary BOM line
+R1 R2,2,5.1 kohm,RC0603FR-075K1L,YAGEO,0603,USB-C CC pull-down resistor,https://yageogroup.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_11.pdf,Active,None,One resistor on each CC pin
+C1 C2,2,10 uF,GRM188R60J106ME47D,Murata,0603,MLCC for regulator input and output,https://ds.murata.com/simsurfing/mlcc.html?oripartnumbers=%5B%22GRM188R60J106ME47D%22%5D&partnumbers=%5B%22GRM188R60J106ME47%22%5D,Active,None,Verify DC bias derating
+

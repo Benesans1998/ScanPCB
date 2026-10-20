@@ -1,0 +1,18 @@
+[
+  {
+    "id": "SCAN-DEMO-001",
+    "name": "ScanPCB Demo Board",
+    "manufacturer": "ScanPCB Community",
+    "summary": "USB-powered ESP32-S3 reference board for the ScanPCB proof of concept.",
+    "revision": "1.0",
+    "data_file": "/web/data/demo-board.json"
+  },
+  {
+    "id": "OLIMEX-ESP32-C6-EVB",
+    "name": "ESP32-C6-EVB",
+    "manufacturer": "Olimex",
+    "summary": "Open Source Hardware ESP32-C6 evaluation board by Olimex.",
+    "revision": "A",
+    "data_file": "/web/data/olimex-esp32-c6-evb.json"
+  }
+]

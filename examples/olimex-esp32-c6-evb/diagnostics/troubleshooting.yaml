@@ -1,0 +1,38 @@
+schema_version: "0.1"
+board_id: OLIMEX-ESP32-C6-EVB
+revision: A
+tree:
+  id: USB-PROGRAMMING
+  title: USB programming or serial communication problem
+  start: classify_usb
+  display_order: [classify_usb, check_flash, enter_bootloader, check_cdc, use_supported_tools]
+  nodes:
+    classify_usb:
+      type: decision
+      question: Does USB repeatedly connect and disconnect while relay LEDs blink?
+      outcomes:
+        yes: check_flash
+        no: check_cdc
+    check_flash:
+      type: action
+      instruction: Treat empty flash as the likely condition and prepare a firmware upload.
+      next: enter_bootloader
+    enter_bootloader:
+      type: action
+      instruction: Hold BUT1, press and release RST1, then release BUT1 before uploading.
+      next: use_supported_tools
+    check_cdc:
+      type: decision
+      question: Is USB CDC enabled in the selected toolchain and firmware configuration?
+      outcomes:
+        no: enable_cdc
+        yes: use_supported_tools
+    enable_cdc:
+      type: result
+      status: configuration_change
+      conclusion: Enable USB CDC and rebuild the firmware.
+    use_supported_tools:
+      type: result
+      status: continue
+      conclusion: Continue with the official ESP-IDF or Arduino examples and their instructions.
+
