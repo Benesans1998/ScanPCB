@@ -85,9 +85,9 @@ visibility:
   enforcement: metadata_only_in_v0.1
 
 qr:
-  canonical_url: https://scanpcb.org/board/OLIMEX-ESP32-C6-EVB
+  canonical_url: https://scanpcb.vercel.app/board/OLIMEX-ESP32-C6-EVB
   revision_urls:
-    A: https://scanpcb.org/board/OLIMEX-ESP32-C6-EVB/rev/A
+    A: https://scanpcb.vercel.app/board/OLIMEX-ESP32-C6-EVB/rev/A
   error_correction: M
   asset_svg: images/olimex-esp32-c6-evb-rev-a.svg
 

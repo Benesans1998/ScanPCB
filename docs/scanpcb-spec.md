@@ -102,13 +102,13 @@ Visibility metadata is descriptive in v0.1. A public Git repository cannot enfor
 The board URL SHOULD remain stable:
 
 ```text
-https://scanpcb.org/board/SCAN-DEMO-001
+https://scanpcb.vercel.app/board/SCAN-DEMO-001
 ```
 
 A revision URL MAY identify an immutable hardware revision:
 
 ```text
-https://scanpcb.org/board/SCAN-DEMO-001/rev/1.0
+https://scanpcb.vercel.app/board/SCAN-DEMO-001/rev/1.0
 ```
 
 QR artwork SHOULD be generated as SVG for lossless scaling. Before fabrication, the publisher SHOULD test module size, quiet zone, contrast and error correction using the intended marking process.

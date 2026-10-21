@@ -16,7 +16,7 @@
       "esp32-s3",
       "usb-c"
     ],
-    "website": "https://scanpcb.org/board/SCAN-DEMO-001"
+    "website": "https://scanpcb.vercel.app/board/SCAN-DEMO-001"
   },
   "repository": {
     "url": "https://github.com/OWNER/scanpcb",
@@ -166,9 +166,9 @@
     "enforcement": "metadata_only_in_v0.1"
   },
   "qr": {
-    "canonical_url": "https://scanpcb.org/board/SCAN-DEMO-001",
+    "canonical_url": "https://scanpcb.vercel.app/board/SCAN-DEMO-001",
     "revision_urls": {
-      "1.0": "https://scanpcb.org/board/SCAN-DEMO-001/rev/1.0"
+      "1.0": "https://scanpcb.vercel.app/board/SCAN-DEMO-001/rev/1.0"
     },
     "error_correction": "M",
     "asset_svg": "images/scanpcb-demo-board-rev-1.0.svg"
